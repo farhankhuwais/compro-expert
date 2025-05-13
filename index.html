@@ -721,7 +721,7 @@
           </div>
 
           <div class="col-lg-5 col-md-12">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                 <div class="validate"></div>
@@ -744,7 +744,45 @@
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
+            </form> -->
+
+
+
+            <form id="emailForm" target="_blank">
+              <div class="form-group mb-3">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" required />
+              </div>
+              <!-- <div class="form-group mb-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" required />
+              </div> -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek" required />
+              </div>
+              <div class="form-group mb-3">
+                <textarea class="form-control" name="message" id="body" rows="5" placeholder="Pesan" required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" onclick="sendEmail()">Kirim Pesan</button>
+              </div>
             </form>
+            <script>
+              function sendEmail() {
+                  // Mengambil nilai dari form
+                  // const to = document.getElementById('to').value;
+                  const name = document.getElementById('name').value;
+                  const subject = encodeURIComponent(document.getElementById('subject').value);
+                  let body = encodeURIComponent(document.getElementById('body').value);
+                  
+                  // Menambahkan informasi pengirim ke isi email
+                  body = encodeURIComponent("Perkenalkan Nama Saya " + name + "," + "\n\n") + body;
+                  
+                  // Membuat mailto link
+                  const mailtoLink = `mailto:kinerja89@gmail.com?subject=${subject}&body=${body}`;
+                  
+                  // Membuka email client
+                  window.location.href = mailtoLink;
+              }
+          </script>
           </div>
 
         </div>
