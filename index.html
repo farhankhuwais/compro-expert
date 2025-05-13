@@ -781,6 +781,17 @@
                   
                   // Membuka email client
                   window.location.href = mailtoLink;
+
+                  // Setelah pengiriman, reset form
+                  document.getElementById('emailForm').reset();
+                  
+                  // Atau bisa juga dengan menghapus nilai dari setiap elemen secara spesifik
+                  document.getElementById('name').value = '';
+                  document.getElementById('subject').value = '';
+                  document.getElementById('body').value = '';
+                  
+                  // Mencegah refresh halaman jika diperlukan
+                  return false;
               }
           </script>
           </div>
